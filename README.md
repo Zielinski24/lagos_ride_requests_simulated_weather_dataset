@@ -1,36 +1,59 @@
+# Lagos Bike Ride Requests Simulated Weather Dataset
 
-# Simulated Weather Dataset
+## 1. Project Overview
 
-## Project Overview
+This project contains a simulated dataset of bike-ride requests in Lagos, Nigeria, for the year 2025. It is designed for data analysis and exploration of ride-request patterns, locations, and weather-related factors.
 
-This repository contains a simulated weather dataset prepared
-for educational and data analysis purposes.
+**Important:** This dataset is simulated and does not represent actual bike ride-hailing transactions or verified operational measurements.
 
-**Important:** This dataset is simulated and does not represent
-a complete record of actual observed weather conditions.
+## 2. Data Source
 
-## Dataset Information
+- Ride-request data: Simulated using the project's Python configuration.
+- Weather data: Open-Meteo. Weather information is credited to [Open-Meteo](https://open-meteo.com/).
 
-- File: simulated_weather_data.csv
-- Format: CSV
-- Contents: Only the required dataset fields.
-- Purpose: Data analysis and project exercises.
+## 3. Section 0.2 – Simplifying Assumptions
 
-## Assumptions (Section 0.2)
+The project uses the following three simplifying assumptions:
 
-1. [AREA_PRECISION = 3 ]          # decimals kept in lat/lng to define a "unique area" (3 decimals is about 110 m)
-2. [REPEAT_MINUTES = 8]           # requests by the same user under 8 minutes after their first request are ignored
-3. [FRAUD_METRES = 50 ]           # pickup and drop closer than 50 m are treated as fraud and ignored
-4. [REPEAT_RULE_SCOPE = "user"]   # "user" = per user_ID (regardless of the area of origin); "global" = any user (removes most data; not recommended)
+1. **Area precision:** Latitude and longitude are rounded to 3 decimal places to define a unique area. This is approximately 110 metres.
+2. **Repeat requests:** Requests made by the same user within 8 minutes after their first request are ignored.
+3. **Fraud detection:** Pickup and drop-off locations less than 50 metres apart are treated as fraudulent and ignored.
 
-## Data Sources and Acknowledgements
+### Additional Simulation Configuration
 
-Weather data credit: Open-Meteo.
+- Simulation year: 2025.
+- Assumed average raw ride requests: 1.6 per district per hour (pilot scale).
+- Lagos weather reference coordinates: Latitude 6.5244, Longitude 3.3792.
+- Repeat-request rule scope: Per user ID, regardless of the area of origin.
 
-Website: https://open-meteo.com/
+### Other Assumptions
 
-## Disclaimer
+- Lagos district characteristics and scores are assumed project inputs, not measured observations.
+- Nigerian public holiday dates are approximate; Eid dates depend on moon sighting and should be verified.
 
-This is a simulated dataset created for educational
-and analytical purposes. It should not be interpreted
-as verified real-world observations.
+## 4. Dataset Fields
+
+The raw dataset contains the following eight fields:
+
+| Field | Description |
+|---|---|
+| user_ID | Simulated user identifier |
+| request_latitude | Latitude of the ride request |
+| request_longitude | Longitude of the ride request |
+| request_time | Date and time of the ride request |
+| pickup_lat | Pickup latitude |
+| pickup_lng | Pickup longitude |
+| drop_lat | Drop-off latitude |
+| drop_lng | Drop-off longitude |
+
+## 5. Dataset File
+
+The dataset is provided as a compressed CSV file:
+
+`lagos_ride_requests_simulated.csv.gz`
+
+Extract the `.gz` file before opening or analysing the CSV.
+
+## 6. Disclaimer
+
+This dataset is intended for educational, analytical, and project demonstration purposes only. All bike ride-request records are simulated. District scores and characteristics are assumptions and should not be interpreted as verified real-world measurements.
